@@ -1,5 +1,5 @@
-import { BaseError } from '@application/Error/Error';
-import { ResponseDTO, ResponseStatus } from '@application/Response/Response';
+import { BaseError } from '@application/error';
+import { ResponseDTO, ResponseStatus } from '../Utilities/Response';
 import { NextFunction, Request, Response } from 'express';
 
 export const ErrorHandler = (

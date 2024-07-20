@@ -23,10 +23,10 @@ const contactctr = new ContactController(new ContactService(contactrepo));
 
 const Auth = Authentication(acctrepo);
 
-router.post('/account/sign-up', Validation(SignUpSchema), acctctr.signUp);
+router.post('/account/signup', Validation(SignUpSchema), acctctr.signUp);
 router.post('/account/login', Validation(LogInSchema), acctctr.login);
 
-router.post('/account/logout', Auth, acctctr.login);
+router.post('/account/logout', Auth, acctctr.logout);
 router.get('/account', Auth, acctctr.getUser);
 
 router.post(

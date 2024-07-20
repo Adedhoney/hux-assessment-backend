@@ -52,7 +52,7 @@ export class ContactController {
         try {
             const contacts = await this.service.GetAllContacts(req.userId!);
 
-            return successResponse(res, 'Contacts', contacts);
+            return successResponse(res, 'Contacts', { contacts });
         } catch (err) {
             next(err);
         }
@@ -66,10 +66,10 @@ export class ContactController {
         try {
             const contact = await this.service.GetSingleContact(
                 req.userId!,
-                req.params.coverId,
+                req.params.contactId,
             );
 
-            return successResponse(res, 'Contact', contact);
+            return successResponse(res, 'Contact', { contact });
         } catch (err) {
             next(err);
         }
@@ -81,7 +81,7 @@ export class ContactController {
         next: NextFunction,
     ) => {
         try {
-            await this.service.DeleteContact(req.userId!, req.params.coverId);
+            await this.service.DeleteContact(req.userId!, req.params.contactId);
 
             return successResponse(res, 'Contact deleted');
         } catch (err) {

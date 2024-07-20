@@ -34,16 +34,16 @@ export class ContactService implements IContactService {
         const contactId = generateRandomId();
         const date = getCurrentTimeStamp();
 
-        const contactInfo = {
+        const contactInfo: Contact = {
             contactId,
             userId,
             firstName: data.firstName,
             lastName: data.lastName,
             phone: data.phone,
-            email: data.email,
             createdOn: date,
             lastModifiedOn: date,
         };
+        if (data.email) contactInfo.email = data.email;
 
         await this.contactrepo.saveContact(contactInfo);
 
