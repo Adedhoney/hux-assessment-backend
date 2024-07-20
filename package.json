@@ -1,0 +1,26 @@
+{
+    "name": "contact_app_backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "lint": "eslint .",
+        "dev": "npm run lint && npx nodemon",
+        "build": "rimraf ./build && tsc && tsc-alias",
+        "start-dev": "npm run build && node build/index.js",
+        "start": "node build/index.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@eslint/js": "^9.7.0",
+        "@types/cors": "^2.8.17",
+        "@types/eslint__js": "^8.42.3",
+        "eslint": "^9.7.0",
+        "nodemon": "^3.1.4",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.5.3",
+        "typescript-eslint": "^7.16.1"
+    }
+}
