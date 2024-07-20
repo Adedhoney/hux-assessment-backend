@@ -3,3 +3,5 @@ uploadedFiles/
 /node_modules
 /.env
 /vscode
+/src/Application
+/src/Domain
