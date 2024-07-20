@@ -48,7 +48,7 @@ export const generateAuthToken = (
 };
 
 export interface ITokenPayload extends jwt.JwtPayload {
-    id: string;
+    userId: string;
     username: string;
     sessionId: string;
 }
