@@ -1,11 +1,8 @@
-// import { ResponseDTO, ResponseStatus } from '@application/Response/Response';
 import { randomUUID } from 'crypto';
-// import { Response } from 'express';
 import bcrypt from 'bcryptjs';
 import path from 'path';
 import * as jwt from 'jsonwebtoken';
 import config from '@application/config';
-// import { Permission } from '@module/Domain/Model';
 
 export enum StatusCode {
     SUCCESS = 200,
@@ -16,29 +13,6 @@ export enum StatusCode {
     NOT_FOUND = 404,
     INTERNAL_ERROR = 500,
 }
-
-// export const successResponse = (
-//     res: Response,
-//     message: string,
-//     data: object = {},
-//     code?: number,
-// ) => {
-//     if (!code) code = StatusCode.SUCCESS;
-//     return res
-//         .status(code)
-//         .send(new ResponseDTO(ResponseStatus.SUCCESS, message, data));
-// };
-
-// export const errorResponse = (
-//     res: Response,
-//     message: string,
-//     code?: number,
-// ) => {
-//     if (!code) code = StatusCode.SUCCESS;
-//     return res
-//         .status(code)
-//         .send(new ResponseDTO(ResponseStatus.ERROR, message));
-// };
 
 export const generateRandomId = (): string => {
     return randomUUID();
