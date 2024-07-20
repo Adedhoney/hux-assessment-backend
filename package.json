@@ -15,8 +15,10 @@
     "description": "",
     "devDependencies": {
         "@eslint/js": "^9.7.0",
+        "@types/bcryptjs": "^2.4.6",
         "@types/cors": "^2.8.17",
         "@types/eslint__js": "^8.42.3",
+        "@types/jsonwebtoken": "^9.0.6",
         "eslint": "^9.7.0",
         "nodemon": "^3.1.4",
         "tsconfig-paths": "^4.2.0",
@@ -24,7 +26,9 @@
         "typescript-eslint": "^7.16.1"
     },
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "dotenv": "^16.4.5",
+        "jsonwebtoken": "^9.0.2",
         "mongodb": "^6.8.0"
     }
 }

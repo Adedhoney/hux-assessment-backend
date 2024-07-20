@@ -1,11 +1,13 @@
 export interface User {
     _id?: number;
     userId: string;
-    userName: string;
     sessionId: string;
+    email: string;
+    firstName: string;
+    lastName: string;
     password?: string;
-    createdOn?: string;
-    lastModifiedOn?: string;
+    createdOn?: number;
+    lastModifiedOn?: number;
 }
 
 export interface Contact {
@@ -14,8 +16,8 @@ export interface Contact {
     userId: string;
     firstName: string;
     lastName: string;
-    phone: number;
+    phone: string;
     email?: string;
-    createdOn?: string;
-    lastModifiedOn?: string;
+    createdOn?: number;
+    lastModifiedOn?: number;
 }

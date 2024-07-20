@@ -1,5 +1,5 @@
 import { ClientSession, Db, MongoClient, ServerApiVersion } from 'mongodb';
-import config from '@application/Config/config';
+import config from '@application/config';
 
 export interface IDatabase {
     getDb(): Db;

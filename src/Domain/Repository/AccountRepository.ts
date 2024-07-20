@@ -5,15 +5,16 @@ export interface IAccountRepository {
     readonly db: IDatabase;
     saveUser(user: User): Promise<void>;
     getUserById(userId: string): Promise<User>;
-    getUserByUserName(email: string): Promise<User>;
+    getUserByEmail(email: string): Promise<User>;
     userNameAvalable(userName: string): Promise<boolean>;
+    logoutUser(userId: string, sessionId: string): Promise<void>;
 
     getUsers(): Promise<User[]>;
 
     updatePassword(
         userId: string,
         password: string,
-        date: string,
+        date: number,
     ): Promise<void>;
 }
 
@@ -40,12 +41,6 @@ export class AccountRepository implements IAccountRepository {
             .findOne({ email });
         return user as User;
     }
-    async getUserByUserName(userName: string): Promise<User> {
-        const user = await this.database
-            .collection<User>('users')
-            .findOne({ userName });
-        return user as User;
-    }
     async userNameAvalable(userName: string): Promise<boolean> {
         const user = await this.database
             .collection<User>('users')
@@ -67,7 +62,7 @@ export class AccountRepository implements IAccountRepository {
     async updatePassword(
         userId: string,
         password: string,
-        date: string,
+        date: number,
     ): Promise<void> {
         await this.database
             .collection<User>('users')
@@ -75,5 +70,11 @@ export class AccountRepository implements IAccountRepository {
                 { userId },
                 { $set: { password, lastModifiedOn: date } },
             );
+    }
+
+    async logoutUser(userId: string, sessionId: string): Promise<void> {
+        await this.database
+            .collection<User>('users')
+            .updateOne({ userId }, { $set: { sessionId } });
     }
 }

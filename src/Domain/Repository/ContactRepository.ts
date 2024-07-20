@@ -5,9 +5,9 @@ export interface IContactRepository {
     readonly db: IDatabase;
     saveContact(contact: Contact): Promise<void>;
     getUserContacts(userId: string): Promise<Contact[]>;
-    getContactbyId(contactId: string): Promise<Contact>;
-    updateContact(contact: Contact): Promise<void>;
-    deleteContact(contactId: string): Promise<void>;
+    getContactbyId(userId: string, contactId: string): Promise<Contact>;
+    updateContact(userId: string, contact: Contact): Promise<void>;
+    deleteContact(userId: string, contactId: string): Promise<void>;
 }
 
 export class ContactRepository implements IContactRepository {
@@ -29,16 +29,16 @@ export class ContactRepository implements IContactRepository {
         return contacts as Contact[];
     }
 
-    async getContactbyId(contactId: string): Promise<Contact> {
+    async getContactbyId(userId: string, contactId: string): Promise<Contact> {
         const contact = await this.database
             .collection<Contact>('contacts')
-            .findOne({ contactId });
+            .findOne({ userId, contactId });
         return contact as Contact;
     }
 
-    async updateContact(contact: Contact): Promise<void> {
+    async updateContact(userId: string, contact: Contact): Promise<void> {
         await this.database.collection<Contact>('contacts').updateOne(
-            { contactId: contact.contactId },
+            { userId, contactId: contact.contactId },
             {
                 $set: {
                     firstName: contact.firstName,
@@ -51,9 +51,9 @@ export class ContactRepository implements IContactRepository {
         );
     }
 
-    async deleteContact(contactId: string): Promise<void> {
+    async deleteContact(userId: string, contactId: string): Promise<void> {
         await this.database
             .collection<Contact>('contacts')
-            .deleteOne({ contactId });
+            .deleteOne({ userId, contactId });
     }
 }
