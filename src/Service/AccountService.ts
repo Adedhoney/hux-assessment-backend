@@ -28,7 +28,10 @@ export class AccountService implements IAccountService {
         // Checks if email already exists
         const emailExists = await this.acctrepo.getUserByEmail(data.email);
         if (emailExists) {
-            throw new CustomError('Email already exists, Log in instead.');
+            throw new CustomError(
+                'Email already exists, Log in instead.',
+                StatusCode.BAD_REQUEST,
+            );
         }
         const password = await encryptPassword(data.password);
 
@@ -52,21 +55,28 @@ export class AccountService implements IAccountService {
         const user = await this.acctrepo.getUserByEmail(data.email);
 
         if (!user) {
-            throw new CustomError('Invalid username or password');
+            throw new CustomError(
+                'Invalid username or password',
+                StatusCode.BAD_REQUEST,
+            );
         }
         const validPassword = await decryptPassword(
             data.password,
             user.password as string,
         );
         if (!validPassword) {
-            throw new CustomError('Invalid username or password');
+            throw new CustomError(
+                'Invalid username or password',
+                StatusCode.BAD_REQUEST,
+            );
         }
         const token = generateAuthToken(
             user.userId,
             user.email,
-            user.sessionId,
+            user.sessionId!,
         );
 
+        delete user.sessionId;
         delete user.password;
 
         return { token, user };
@@ -90,6 +100,7 @@ export class AccountService implements IAccountService {
         }
 
         delete user.password;
+        delete user.sessionId;
 
         return user;
     }

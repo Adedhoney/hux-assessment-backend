@@ -1,7 +1,7 @@
 export interface User {
     _id?: number;
     userId: string;
-    sessionId: string;
+    sessionId?: string;
     email: string;
     firstName: string;
     lastName: string;
