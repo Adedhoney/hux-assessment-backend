@@ -55,6 +55,12 @@ export class ContactService implements IContactService {
         contactId: string,
         data: UpdateContactDTO,
     ): Promise<Contact> {
+        if (!data.email && !data.firstName && !data.lastName && !data.phone) {
+            throw new CustomError(
+                'You must update one of either firstname, lastname, phone or email',
+                StatusCode.BAD_REQUEST,
+            );
+        }
         const date = getCurrentTimeStamp();
 
         const oldContact = await this.contactrepo.getContactbyId(

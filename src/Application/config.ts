@@ -2,15 +2,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const envs = [
-    'DB_URI',
-    'DB_NAME',
-    'JWT_SECRET',
-    'SMTP_HOST',
-    'SMTP_PORT',
-    'SMTP_USERNAME',
-    'SMTP_PASSWORD',
-];
+const envs = ['DB_URI', 'DB_NAME', 'JWT_SECRET'];
 
 envs.forEach((value, index) => {
     if (!process.env[envs[index]]) {
