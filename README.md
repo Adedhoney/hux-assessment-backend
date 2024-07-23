@@ -2,6 +2,9 @@
 
 Link to Frontend github: https://github.com/Adedhoney/hux-assessment-frontend
 
+Click this link to view the api documentation  
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/24968726-4e67f6fa-3b97-4df6-842e-dcef3b78a4cc?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D24968726-4e67f6fa-3b97-4df6-842e-dcef3b78a4cc%26entityType%3Dcollection%26workspaceId%3Def119169-17fa-458b-b693-2889f5b2158b)
+
 ## Tech used:
 
 **Runtime environment**
